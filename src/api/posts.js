@@ -1,4 +1,4 @@
-const postApiUrl = "http://localhost:5173/posts";
+const postApiUrl = "http://localhost:3001/posts";
 
 export const fetchData = async () => {
   const response = await fetch(postApiUrl);

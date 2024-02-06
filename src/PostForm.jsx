@@ -11,16 +11,13 @@ export function PostForm() {
     handleSubmit,
     formState: { errors },
   } = useForm();
+
   const onSubmit = (data) => console.log(data);
-  console.log("errors", errors);
 
   const { data: postData, isLoading } = useQuery({
     queryKey: ["posts"],
     queryFn: fetchData,
   });
-
-  console.log("PostData", postData);
-  console.log("is Loading", isLoading);
 
   return (
     <main className="flex flex-col items-center w-full">
