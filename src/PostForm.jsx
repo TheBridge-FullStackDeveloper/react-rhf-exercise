@@ -1,35 +1,78 @@
 import { useForm } from "react-hook-form";
 import { Button } from "@nextui-org/react";
+import { SingleInput } from "./singleInput";
+import { fetchData } from "./api/posts";
+import { useQuery } from "@tanstack/react-query";
 
 export function PostForm() {
   const {
+    control,
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => console.log(data);
-  console.log(errors);
+  console.log("errors", errors);
+
+  const { data: postData, isLoading } = useQuery({
+    queryKey: ["posts"],
+    queryFn: fetchData,
+  });
+
+  console.log("PostData", postData);
+  console.log("is Loading", isLoading);
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="flex flex-col justify-center items-center">
-        <input type="text" placeholder="title " {...register("title", {})} />
-        <input type="text" placeholder="author" {...register("author", {})} />
-        <input
-          type="email"
-          placeholder="email"
-          {...register("test", {
-            pattern: {
-              value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-              message: "This is not a valid email",
-            },
-          })}
+    <main className="flex flex-col items-center w-full">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="flex flex-col min-w-[600px]"
+      >
+        <SingleInput
+          control={control}
+          register={register}
+          type="text"
+          name="title"
+          isRequired
+          error={errors.title}
         />
 
-        <input type="text" placeholder="body" {...register("body", {})} />
+        <SingleInput
+          control={control}
+          register={register}
+          type="text"
+          name="author"
+          isRequired
+          error={errors.author}
+        />
 
-        <Button color="primary">Create New Post</Button>
+        <SingleInput
+          control={control}
+          register={register}
+          type="text"
+          name="body"
+          isRequired
+          error={errors.body}
+        />
+
+        <Button color="primary" type="submit">
+          Create New Post
+        </Button>
+      </form>
+
+      <div className="flex flex-col">
+        {isLoading ? (
+          <p>Loading</p>
+        ) : (
+          postData?.map((singlePost, index) => {
+            return (
+              <div key={index}>
+                <h2>{singlePost.title}</h2>
+              </div>
+            );
+          })
+        )}
       </div>
-    </form>
+    </main>
   );
 }

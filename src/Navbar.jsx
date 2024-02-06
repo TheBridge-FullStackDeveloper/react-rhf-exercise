@@ -15,7 +15,7 @@ const navigationBarItems = [
   },
   {
     id: 2,
-    url: "/posts",
+    url: "/post-list",
     name: "Posts",
   },
   {
