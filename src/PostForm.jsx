@@ -1,13 +1,17 @@
 import { useForm } from "react-hook-form";
 import { Button } from "@nextui-org/react";
-import { SingleInput } from "./singleInput";
-import { fetchData } from "./api/posts";
-import { useQuery, useMutation } from "@tanstack/react-query";
+import { SingleInput } from "./SingleInput";
+import { fetchData, createPost } from "./api/posts";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { useState } from "react";
+import Alert from "@mui/material/Alert";
+import { Link } from "react-router-dom";
 
 export function PostForm() {
+  const [post, setPost] = useState({});
+
   const {
     control,
-    register,
     handleSubmit,
     formState: { errors },
   } = useForm();
@@ -17,49 +21,66 @@ export function PostForm() {
     queryFn: fetchData,
   });
 
-  const { mutate: create } = useMutation({
-    mutationFn: (post) => {
-      createPost(post);
+  const queryClient = useQueryClient();
+
+  const { mutate } = useMutation({
+    mutationKey: "posts",
+    mutationFn: createPost,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["posts"] });
     },
   });
 
   const onSubmit = (data) => {
-    const newPost = { ...data, id: Date.now() };
-    create(newPost);
-    console.log("data", data);
-    console.log("newPost", newPost);
+    mutate(data);
+    setPost(data);
   };
 
+  if (post.title) {
+    return (
+      <>
+        <Alert sx={{ mb: 2 }}>Post succesfully submitted.</Alert>
+        <Button
+          radius="full"
+          className="bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg"
+        >
+          <Link to="/posts">View all posts</Link>
+        </Button>
+      </>
+    );
+  }
+
   return (
-    <main className="flex flex-col items-center w-full">
+    <main className="flex flex-col items-center w-full mt-10">
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="flex flex-col min-w-[600px]"
       >
         <SingleInput
           control={control}
-          register={register}
-          type="text"
           name="title"
-          isRequired
+          patternValue=".*"
           error={errors.title}
         />
 
         <SingleInput
           control={control}
-          register={register}
-          type="text"
           name="author"
-          isRequired
+          patternValue=".*"
           error={errors.author}
         />
 
         <SingleInput
           control={control}
-          register={register}
-          type="text"
+          name="email"
+          patternValue="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+          error={errors.email}
+        />
+
+        <SingleInput
+          control={control}
           name="body"
-          isRequired
+          patternValue=".*"
           error={errors.body}
         />
 
@@ -67,27 +88,6 @@ export function PostForm() {
           Create New Post
         </Button>
       </form>
-
-      <div>
-        <h1>New post created</h1>
-        <p>{newPost.title}</p>
-        <p>{newPost.author}</p>
-        <p>{newPost.id}</p>
-      </div>
-
-      <div className="flex flex-col">
-        {isLoading ? (
-          <p>Loading</p>
-        ) : (
-          postData?.map((singlePost, index) => {
-            return (
-              <div key={index}>
-                <h2>{singlePost.title}</h2>
-              </div>
-            );
-          })
-        )}
-      </div>
     </main>
   );
 }

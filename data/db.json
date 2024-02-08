@@ -1,6 +1,18 @@
 {
   "posts": [
-    { "title": "a title", "author": "Juan", "body": "body" },
-    { "title": "another title", "author": "Pepe", "body": "body" }
+    {
+      "id": "a595",
+      "title": "useQuery",
+      "author": "Cristina",
+      "email": "test@test.com",
+      "body": "useQuery "
+    },
+    {
+      "id": "5d42",
+      "title": "Mutuations",
+      "author": "Pepe",
+      "email": "pepe@test.com",
+      "body": "I am working on mutations"
+    }
   ]
 }

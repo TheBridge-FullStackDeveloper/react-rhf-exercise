@@ -1,7 +1,7 @@
 import { Input } from "@nextui-org/react";
 import { Controller } from "react-hook-form";
 
-export function SingleInput({ control, name, error }) {
+export function SingleInput({ control, name, error, patternValue }) {
   const capitalizeFirstLetter = (string) =>
     string.charAt(0).toUpperCase() + string.slice(1);
 
@@ -9,7 +9,16 @@ export function SingleInput({ control, name, error }) {
     <Controller
       name={name}
       control={control}
-      rules={{ required: "This field is required" }}
+      rules={{
+        required: {
+          value: true,
+          message: "This field is required.",
+        },
+        pattern: {
+          value: new RegExp(`^${patternValue}$`),
+          message: "This is not a valid input",
+        },
+      }}
       render={({ field: { onChange, value, name } }) => (
         <Input
           label={capitalizeFirstLetter(name)}

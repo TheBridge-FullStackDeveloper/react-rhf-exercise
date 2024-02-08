@@ -15,7 +15,7 @@ const navigationBarItems = [
   },
   {
     id: 2,
-    url: "/post-list",
+    url: "/posts",
     name: "Posts",
   },
   {
@@ -28,7 +28,7 @@ const navigationBarItems = [
 export function NavBar() {
   return (
     <>
-      <Navbar>
+      <Navbar className="bg-gray-900 text-white">
         <NavbarBrand>
           <p className="font-bold text-inherit">BLOG</p>
         </NavbarBrand>
@@ -37,7 +37,7 @@ export function NavBar() {
           {navigationBarItems.map((navBarItem) => {
             return (
               <NavbarItem key={navBarItem.id}>
-                <Link color="foreground" href={navBarItem.url}>
+                <Link color="white" href={navBarItem.url}>
                   {navBarItem.name}
                 </Link>
               </NavbarItem>

@@ -10,9 +10,9 @@ export function App() {
     <Routes>
       <Route element={<NavBar />}>
         <Route path="/" element={<Index />} />
-        <Route path="/post-list" element={<PostList />} />
+        <Route path="/posts" element={<PostList />} />
         <Route path="/create-post" element={<PostForm />} />
-        <Route path="/post/:postId" element={<SinglePost />} />
+        <Route path="/posts/:id" element={<SinglePost />} />
       </Route>
     </Routes>
   );
