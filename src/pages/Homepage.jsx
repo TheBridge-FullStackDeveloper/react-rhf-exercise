@@ -3,7 +3,7 @@ import React from "react";
 export const Homepage = () => {
   return (
     <>
-      <body class="bg-gray-100 min-h-screen">
+      <div class="bg-gray-100 min-h-screen">
         <section class="relative bg-gradient-to-r from-blue-400 to-indigo-600 text-white py-20">
           <div class="container mx-auto text-center">
             <h2 class="text-4xl font-bold mb-4">
@@ -41,7 +41,7 @@ export const Homepage = () => {
             </div>
           </div>
         </section>
-      </body>
+      </div>
     </>
   );
 };
