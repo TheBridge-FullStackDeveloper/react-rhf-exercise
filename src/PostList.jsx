@@ -12,6 +12,12 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchData } from "./api/posts";
 import { Link } from "react-router-dom";
 
+const randomAvatars = [
+  "../public/images/avatar1.jpeg",
+  "../public/images/avatar2.jpeg",
+  "../public/images/avatar3.jpeg",
+];
+
 export function PostList() {
   const { data: postData, isLoading } = useQuery({
     queryKey: ["posts"],
@@ -37,12 +43,18 @@ export function PostList() {
       }}
     >
       {postData?.map((singlePost, index) => {
+        // Generate a random index within the range of the array's length
+        const randomIndex = Math.floor(Math.random() * randomAvatars.length);
+
+        // Use the random index to access the corresponding element
+        const randomAvatar = randomAvatars[randomIndex];
+
         return (
           <div key={index}>
             <ListItem alignItems="flex-start">
               <Link to={singlePost.id.toString()}>
                 <ListItemAvatar>
-                  <Avatar src="/broken-image.jpg" />
+                  <Avatar src={randomAvatar} />
                 </ListItemAvatar>
                 <ListItemText
                   primary={singlePost.title}
