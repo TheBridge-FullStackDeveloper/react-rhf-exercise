@@ -38,7 +38,7 @@ export function PostForm() {
 
   if (post.title) {
     return (
-      <>
+      <div className="flex flex-col justify-center items-center h-screen">
         <Alert sx={{ mb: 2 }}>Post succesfully submitted.</Alert>
         <Button
           radius="full"
@@ -46,7 +46,7 @@ export function PostForm() {
         >
           <Link to="/posts">View all posts</Link>
         </Button>
-      </>
+      </div>
     );
   }
 
@@ -54,7 +54,7 @@ export function PostForm() {
     <main className="flex flex-col items-center w-full mt-10">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-col min-w-[600px]"
+        className="flex flex-col min-w-[600px] gap-3"
       >
         <SingleInput
           control={control}
@@ -84,9 +84,11 @@ export function PostForm() {
           error={errors.body}
         />
 
-        <Button color="primary" type="submit">
-          Create New Post
-        </Button>
+        <div className="flex justify-center">
+          <Button color="primary" type="submit" className="w-[300px]">
+            Create New Post
+          </Button>
+        </div>
       </form>
     </main>
   );

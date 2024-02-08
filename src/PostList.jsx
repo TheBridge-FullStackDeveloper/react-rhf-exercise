@@ -39,7 +39,7 @@ export function PostList() {
         maxWidth: 500,
         bgcolor: "background.paper",
         margin: "auto",
-        marginTop: 10,
+        marginTop: 6,
       }}
     >
       {postData?.map((singlePost, index) => {
