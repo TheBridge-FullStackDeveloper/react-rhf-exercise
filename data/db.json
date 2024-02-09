@@ -1,0 +1,53 @@
+{
+  "posts": [
+    {
+      "id": "a595",
+      "title": "useQuery",
+      "author": "Cristina",
+      "email": "test@test.com",
+      "body": "useQuery "
+    },
+    {
+      "id": "5d42",
+      "title": "Mutuations",
+      "author": "Pepe",
+      "email": "pepe@test.com",
+      "body": "I am working on mutations"
+    },
+    {
+      "id": "5b82",
+      "title": "P5",
+      "author": "Juan",
+      "email": "juan@p5.com",
+      "body": "I like P5"
+    },
+    {
+      "id": "936b",
+      "title": "Flappy bird",
+      "author": "Daniel",
+      "email": "test@test.com",
+      "body": "There is a bug"
+    },
+    {
+      "id": "601d",
+      "title": "testing",
+      "author": "Mary",
+      "email": "test@test.com",
+      "body": "I am testing "
+    },
+    {
+      "id": "e052",
+      "title": "Hello",
+      "author": "Lucas",
+      "email": "test@test.com",
+      "body": "Body message"
+    },
+    {
+      "id": "6972",
+      "title": "HTML",
+      "author": "Fran",
+      "email": "fran@test.com",
+      "body": "learning the tags"
+    }
+  ]
+}
