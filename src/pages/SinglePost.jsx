@@ -1,20 +1,15 @@
 import { useParams } from "react-router-dom";
 import { CircularColor } from "./CircularColor";
-import { fetchData } from "./api/posts";
+import { fetchData } from "../api/posts";
 import { useQuery } from "@tanstack/react-query";
-import {
-  Card,
-  CardHeader,
-  CardBody,
-  CardFooter,
-  Avatar,
-  Button,
-} from "@nextui-org/react";
+import { Card, CardHeader, CardBody, Avatar } from "@nextui-org/react";
+import { Button } from "antd";
+import { Link } from "react-router-dom";
 
 const randomAvatars = [
-  "../public/images/avatar1.jpeg",
-  "../public/images/avatar2.jpeg",
-  "../public/images/avatar3.jpeg",
+  "../images/avatar1.jpeg",
+  "../images/avatar2.jpeg",
+  "../images/avatar3.jpeg",
   "https://i.pravatar.cc/150?u=a042581f4e29026704d",
 ];
 
@@ -39,7 +34,7 @@ export function SinglePost() {
   }
 
   if (!post) {
-    return <p>Beer not found</p>;
+    return <p>Post not found</p>;
   }
 
   return (
@@ -67,6 +62,12 @@ export function SinglePost() {
           </span>
         </span>
       </CardBody>
+
+      <div className="flex flex-row justify-center mb-40">
+        <Button>
+          <Link to="/posts">Back to the list</Link>
+        </Button>
+      </div>
     </Card>
   );
 }

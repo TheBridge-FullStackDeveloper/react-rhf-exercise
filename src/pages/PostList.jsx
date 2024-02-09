@@ -9,13 +9,14 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import LinearProgress from "@mui/material/LinearProgress";
 import { useQuery } from "@tanstack/react-query";
-import { fetchData } from "./api/posts";
+import { fetchData } from "../api/posts";
 import { Link } from "react-router-dom";
 
 const randomAvatars = [
-  "../public/images/avatar1.jpeg",
-  "../public/images/avatar2.jpeg",
-  "../public/images/avatar3.jpeg",
+  "../images/avatar1.jpeg",
+  "../images/avatar2.jpeg",
+  "../images/avatar3.jpeg",
+  "https://i.pravatar.cc/150?u=a042581f4e29026704d",
 ];
 
 export function PostList() {

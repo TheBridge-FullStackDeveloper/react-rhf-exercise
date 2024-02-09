@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { Button } from "@nextui-org/react";
 import { SingleInput } from "./SingleInput";
-import { fetchData, createPost } from "./api/posts";
+import { fetchData, createPost } from "../api/posts";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import Alert from "@mui/material/Alert";
