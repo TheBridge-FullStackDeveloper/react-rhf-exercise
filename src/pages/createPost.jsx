@@ -1,9 +1,21 @@
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { Container, Typography, TextField, Button, Card, CardContent, Grid } from "@mui/material";
+import {
+  Container,
+  Typography,
+  TextField,
+  Button,
+  Card,
+  CardContent,
+  Grid,
+} from "@mui/material";
 
 export const CreatePost = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   const onSubmit = async (data) => {
     try {
@@ -25,14 +37,23 @@ export const CreatePost = () => {
   };
 
   return (
-    <Container maxWidth="md" sx={{ marginTop: '80px', textAlign: 'center', minHeight: 'calc(100vh - 80px)', padding: '20px', borderRadius: "10px", }}>
+    <Container
+      maxWidth="md"
+      sx={{
+        marginTop: "80px",
+        textAlign: "center",
+        minHeight: "calc(100vh - 80px)",
+        padding: "20px",
+        borderRadius: "10px",
+      }}
+    >
       <Typography variant="h2" component="h1" gutterBottom>
         Crear un nuevo post
       </Typography>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Grid container spacing={2}>
           <Grid item xs={12} sm={6}>
-            <Card sx={{ backgroundColor: '#E3F2FD' }}>
+            <Card sx={{ backgroundColor: "#E3F2FD" }}>
               <CardContent>
                 <TextField
                   {...register("title", { required: true })}
@@ -46,7 +67,7 @@ export const CreatePost = () => {
             </Card>
           </Grid>
           <Grid item xs={12} sm={6}>
-            <Card sx={{ backgroundColor: '#E3F2FD' }}>
+            <Card sx={{ backgroundColor: "#E3F2FD" }}>
               <CardContent>
                 <TextField
                   {...register("author", { required: true })}
@@ -60,7 +81,7 @@ export const CreatePost = () => {
             </Card>
           </Grid>
           <Grid item xs={12}>
-            <Card sx={{ backgroundColor: '#E3F2FD' }}>
+            <Card sx={{ backgroundColor: "#E3F2FD" }}>
               <CardContent>
                 <TextField
                   {...register("email", { required: true })}
@@ -74,7 +95,7 @@ export const CreatePost = () => {
             </Card>
           </Grid>
           <Grid item xs={12}>
-            <Card sx={{ backgroundColor: '#E3F2FD' }}>
+            <Card sx={{ backgroundColor: "#E3F2FD" }}>
               <CardContent>
                 <TextField
                   {...register("body", { required: true })}
@@ -90,14 +111,24 @@ export const CreatePost = () => {
             </Card>
           </Grid>
         </Grid>
-        <Button type="submit" variant="contained" color="primary" sx={{ marginTop: '20px' }}>
+        <Button
+          type="submit"
+          variant="contained"
+          color="primary"
+          sx={{ marginTop: "20px" }}
+        >
           Crear Post
         </Button>
       </form>
-      <Button component={Link} to="/" variant="contained" color="warning" sx={{ marginTop: '20px' }}>
+      <Button
+        component={Link}
+        to="/"
+        variant="contained"
+        color="warning"
+        sx={{ marginTop: "20px" }}
+      >
         Volver a la HomePage
       </Button>
     </Container>
   );
 };
-

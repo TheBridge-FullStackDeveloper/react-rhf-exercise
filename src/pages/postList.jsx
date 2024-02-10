@@ -1,5 +1,13 @@
-import { useEffect, useState} from "react";
-import { Typography, List, ListItem, ListItemText, Paper, Container, Button } from "@mui/material";
+import { useEffect, useState } from "react";
+import {
+  Typography,
+  List,
+  ListItem,
+  ListItemText,
+  Paper,
+  Container,
+  Button,
+} from "@mui/material";
 import { Link } from "react-router-dom";
 
 export const PostsList = () => {
@@ -24,32 +32,55 @@ export const PostsList = () => {
 
   return (
     <Container maxWidth="md" sx={{ marginTop: "100px" }}>
-      <div style={{ textAlign: "center" }}> {/* Centrar el título */}
+      <div style={{ textAlign: "center" }}>
+        {" "}
+        {/* Centrar el título */}
         <Typography variant="h4" gutterBottom fontWeight="bold">
           Lista de Posts
         </Typography>
       </div>
-      <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
         <List>
           {posts.map((post) => (
-            <Paper key={post.id} elevation={3} style={{ padding: "20px", marginBottom: "20px", borderRadius: "10px", backgroundColor: "#E3F2FD" }}>
+            <Paper
+              key={post.id}
+              elevation={3}
+              style={{
+                padding: "20px",
+                marginBottom: "20px",
+                borderRadius: "10px",
+                backgroundColor: "#E3F2FD",
+              }}
+            >
               <ListItem component={Link} to={`/post/${post.id}`} button>
                 <ListItemText
-                  primary={<Typography variant="h6" component="span" fontWeight="bold">{post.title}</Typography>}
+                  primary={
+                    <Typography variant="h6" component="span" fontWeight="bold">
+                      {post.title}
+                    </Typography>
+                  }
                   secondary={post.body}
                 />
               </ListItem>
             </Paper>
           ))}
         </List>
-        <Button component={Link} to="/" variant="contained" color="warning" sx={{ marginTop: '20px' }}>
+        <Button
+          component={Link}
+          to="/"
+          variant="contained"
+          color="warning"
+          sx={{ marginTop: "20px" }}
+        >
           Volver a la HomePage
         </Button>
       </div>
     </Container>
   );
 };
-
-
-
-

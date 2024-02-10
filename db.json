@@ -1,25 +1,3 @@
 {
-  "posts": [
-    {
-      "id": "3a03",
-      "title": "Test de Prueba",
-      "author": "Iván",
-      "email": "test@test",
-      "body": "Hola, estamos de pruebas\n"
-    },
-    {
-      "id": "cdc2",
-      "title": "hola",
-      "author": "hola",
-      "email": "hola",
-      "body": "hola"
-    },
-    {
-      "id": "bf00",
-      "title": "Pruebas",
-      "author": "Iván",
-      "email": "aaa",
-      "body": "ajksbdjkabflkjhasflkjalksfjklajsfkjasklfjaklsjfalksfjaklsfjlkajdsflkajdsflkjlkadjfasf\nASFASFasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-    }
-  ]
-}
+    "posts": []
+  }

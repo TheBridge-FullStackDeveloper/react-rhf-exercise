@@ -21,11 +21,14 @@ export const NavBar = () => {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             React Hook App
           </Typography>
-          <Button component={Link} to="/create-post" color="inherit">Crear Post</Button>
-          <Button component={Link} to="/posts" color="inherit">Posts</Button>
+          <Button component={Link} to="/create-post" color="inherit">
+            Crear Post
+          </Button>
+          <Button component={Link} to="/posts" color="inherit">
+            Posts
+          </Button>
         </Toolbar>
       </AppBar>
     </Box>
   );
 };
-

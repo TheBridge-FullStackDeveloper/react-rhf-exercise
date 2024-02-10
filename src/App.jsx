@@ -10,12 +10,12 @@ function App() {
     <div>
       <NavBar />
       <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/posts" element={<PostsList />} />
-          <Route path="/create-post" element={<CreatePost />} />
-          <Route path="/post/:postId" element={<DetailPost />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/posts" element={<PostsList />} />
+        <Route path="/create-post" element={<CreatePost />} />
+        <Route path="/post/:postId" element={<DetailPost />} />
       </Routes>
-      </div>
+    </div>
   );
 }
 

@@ -28,7 +28,14 @@ export const DetailPost = () => {
       <Typography variant="h4" gutterBottom fontWeight="bold">
         Detalle del Post
       </Typography>
-      <Paper elevation={3} style={{ padding: "20px", borderRadius: "10px", backgroundColor: "#E3F2FD" }}>
+      <Paper
+        elevation={3}
+        style={{
+          padding: "20px",
+          borderRadius: "10px",
+          backgroundColor: "#E3F2FD",
+        }}
+      >
         {post ? (
           <div>
             <Typography variant="h5" gutterBottom>
@@ -46,10 +53,16 @@ export const DetailPost = () => {
             Cargando...
           </Typography>
         )}
-        </Paper>
-        <Button component={Link} to="/posts" variant="contained" color="primary" sx={{ marginTop: "20px" }}>
-          Volver a la lista de posts
-        </Button>
+      </Paper>
+      <Button
+        component={Link}
+        to="/posts"
+        variant="contained"
+        color="primary"
+        sx={{ marginTop: "20px" }}
+      >
+        Volver a la lista de posts
+      </Button>
     </div>
   );
 };
