@@ -9,7 +9,7 @@ Esta aplicación va a tener varias paginas páginas:
 - La pagina de detalle de un post `/post/:postId`
 
 Las librerias que vamos a usar son:
-- `react-router-dom` para la navegación
+- `react-router` para la navegación
 - `react-hook-form` para el manejo de formularios
 - `@tanstack/react-query` para el manejo de peticiones a la api
 - `json-server` para simular una api rest
