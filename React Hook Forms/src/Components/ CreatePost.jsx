@@ -52,7 +52,7 @@ const CreatePost = () => {
           <TextField
             className="Inputs"
             label="Title"
-            variant="filled"
+            variant="outlined"
             {...register("title", {
               required: "Te falta el Titulo",
               maxLength: 20,
@@ -64,7 +64,7 @@ const CreatePost = () => {
           <TextField
             className="Inputs"
             label="Author"
-            variant="filled"
+            variant="outlined"
             {...register("author", {
               required: "Te falta el Titulo",
               maxLength: 20,
@@ -77,7 +77,7 @@ const CreatePost = () => {
             className="Inputs"
             type="email"
             label="Email"
-            variant="filled"
+            variant="outlined"
             {...register("email", {
               required: "Te falta el Titulo",
               maxLength: 20,
@@ -93,10 +93,10 @@ const CreatePost = () => {
           <TextField
             className="Inputs"
             label="Body"
-            variant="filled"
+            variant="outlined"
             {...register("body", {
               required: "Te falta el Body del post",
-              maxLength: 20,
+              maxLength: 200,
             })}
           />
           {errors.body && <p className="error">{errors.body.message}</p>}
