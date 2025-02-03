@@ -1,11 +1,9 @@
-import { useEffect, useState } from "react"
+import { useQuery } from "react-query"
 import { Link, useParams } from "react-router"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Skeleton } from "@/components/ui/skeleton"
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { CalendarIcon, Clock, User, ArrowLeft } from "lucide-react"
-
 
 interface Post {
   id: number
@@ -18,30 +16,36 @@ interface Post {
   readTime: string
 }
 
+const fetchPost = async (id: string | undefined): Promise<Post> => {
+  if (!id) {
+    throw new Error("No post ID provided")
+  }
+  
+  const response = await fetch(`http://localhost:3000/posts/${id}`)
+  if (!response.ok) {
+    throw new Error("Failed to fetch post")
+  }
+  return response.json()
+}
+
 export function ViewSinglePost() {
   const { id } = useParams()
-  const [post, setPost] = useState<Post | null>(null)
-  const [isLoading, setIsLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
-
-  useEffect(() => {
-    const fetchPost = async () => {
-      try {
-        const response = await fetch(`http://localhost:3000/posts/${id}`)
-        if (!response.ok) {
-          throw new Error("Failed to fetch post")
-        }
-        const data = await response.json()
-        setPost(data)
-      } catch (err) {
-        setError("Failed to load post. Please try again later.")
-      } finally {
-        setIsLoading(false)
+  
+  const { 
+    data: post, 
+    isLoading, 
+    error 
+  } = useQuery<Post, Error>(
+    ['post', id], 
+    () => fetchPost(id),
+    {
+      enabled: !!id,
+      retry: 1,
+      onError: (error) => {
+        console.error("Error fetching post:", error)
       }
     }
-
-    fetchPost()
-  }, [id])
+  )
 
   if (isLoading) {
     return (
@@ -64,22 +68,41 @@ export function ViewSinglePost() {
   if (error) {
     return (
       <div className="container mx-auto px-4 py-8">
-        <Alert variant="destructive">
-          <AlertTitle>Error</AlertTitle>
-          <AlertDescription>{error}</AlertDescription>
-        </Alert>
-      </div>
+      <Card className="max-w-3xl mx-auto">
+        <CardHeader className="flex items-center gap-4 flex-row align-items-center">
+          <Link to="/search" className="hover:text-primary">
+              <ArrowLeft className="h-auto" />
+          </Link>
+          <CardTitle className="text-3xl mb-4">Something went wrong</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="prose max-w-none">
+            {error.toString()}
+          </div>
+        </CardContent>
+      </Card>
+    </div>
     )
   }
 
   if (!post) {
+
     return (
       <div className="container mx-auto px-4 py-8">
-        <Alert>
-          <AlertTitle>Not Found</AlertTitle>
-          <AlertDescription>The requested post could not be found.</AlertDescription>
-        </Alert>
-      </div>
+      <Card className="max-w-3xl mx-auto">
+        <CardHeader className="flex items-center gap-4 flex-row align-items-center">
+          <Link to="/search" className="hover:text-primary">
+              <ArrowLeft className="h-auto" />
+          </Link>
+          <CardTitle className="text-3xl mb-4">Not Found</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="prose max-w-none">
+          The requested post could not be found.
+          </div>
+        </CardContent>
+      </Card>
+    </div>
     )
   }
 
