@@ -1,0 +1,11 @@
+
+.Inputs{
+width: 100%;
+}
+.containerInputs{
+    width: 300px;
+}
+.error{
+    color: red;
+    font-size: 0.7rem;
+}
