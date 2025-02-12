@@ -1,13 +1,21 @@
+import { Box, Typography } from "@mui/material";
+
 const Home = () => {
   return (
     <>
-      <div>
-        <h1>📬 PostApp</h1>
-      </div>
-
-      <div>
-        <p style={{display:"flex", justifyContent:"center"}}>Bienvenido/a a PostApp, una aplicación para plasmar tus ideas.</p>
-      </div>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: 2,
+          p: 2,
+          height:"90vh"
+        }}
+      >
+        <Typography variant="h4">Bienvenido/a a PostApp, una aplicación para plasmar tus ideas.</Typography>
+      </Box>
     </>
   );
 };

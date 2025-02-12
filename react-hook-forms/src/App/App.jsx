@@ -1,4 +1,4 @@
-import "../styles/global.css";
+
 import NavBar from "../components/Navbar";
 import Home from "../routes/Home";
 import Posts from "../routes/Posts";
