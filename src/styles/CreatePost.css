@@ -1,0 +1,22 @@
+/* Center the form container */
+.create-post-container {
+  max-width: 400px;
+  margin: 0 auto; /* Centers the form */
+  text-align: center;
+}
+
+/* Stack inputs vertically with spacing */
+.create-post-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Adds space between inputs */
+}
+
+/* Make inputs full width */
+.create-post-input,
+.create-post-textarea,
+.create-post-button {
+  width: 100%;
+  padding: 8px;
+  font-size: 1rem;
+}

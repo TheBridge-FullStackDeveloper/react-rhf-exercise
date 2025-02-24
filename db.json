@@ -1,0 +1,25 @@
+{
+  "posts": [
+    {
+      "id": "1",
+      "title": "Test Post",
+      "author": "John Doe",
+      "email": "john@example.com",
+      "body": "This is a test post."
+    },
+    {
+      "id": "a1e1",
+      "title": "2nd post!!! - testing",
+      "author": "Will",
+      "email": "will@test.com",
+      "body": "blah blah blah blah... please work! =)"
+    },
+    {
+      "id": "c533",
+      "title": "test3",
+      "author": "Donald Duck",
+      "email": "donald@disney.com",
+      "body": "quack quack"
+    }
+  ]
+}
